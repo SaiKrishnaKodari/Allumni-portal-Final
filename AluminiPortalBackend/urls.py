@@ -21,4 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Alumni_views.home_page),
     path('banner_posts', Alumni_views.send_banner_posts),
+    path('posts', Alumni_views.posts_view),
+    path('add_post', Alumni_views.add_post),
+
 ]
