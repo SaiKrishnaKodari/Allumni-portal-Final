@@ -1,0 +1,2 @@
+(this.webpackJsonpalumini_portal_front_end=this.webpackJsonpalumini_portal_front_end||[]).push([[50],{166:function(n,a){Prism.languages.brainfuck={pointer:{pattern:/<|>/,alias:"keyword"},increment:{pattern:/\+/,alias:"inserted"},decrement:{pattern:/-/,alias:"deleted"},branching:{pattern:/\[|\]/,alias:"important"},operator:/[.,]/,comment:/\S+/}}}]);
+//# sourceMappingURL=50.2d29ae68.chunk.js.map

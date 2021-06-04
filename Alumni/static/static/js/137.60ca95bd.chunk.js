@@ -1,0 +1,2 @@
+(this.webpackJsonpalumini_portal_front_end=this.webpackJsonpalumini_portal_front_end||[]).push([[137],{253:function(n,t){Prism.languages.gcode={comment:/;.*|\B\(.*?\)\B/,string:{pattern:/"(?:""|[^"])*"/,greedy:!0},keyword:/\b[GM]\d+(?:\.\d+)?\b/,property:/\b[A-Z]/,checksum:{pattern:/\*\d+/,alias:"punctuation"},punctuation:/:/}}}]);
+//# sourceMappingURL=137.60ca95bd.chunk.js.map

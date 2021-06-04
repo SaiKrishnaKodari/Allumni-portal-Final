@@ -1,0 +1,2 @@
+(this.webpackJsonpalumini_portal_front_end=this.webpackJsonpalumini_portal_front_end||[]).push([[421],{537:function(n,s){var a=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",a)}}]);
+//# sourceMappingURL=421.16bbc905.chunk.js.map

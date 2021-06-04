@@ -1,0 +1,2 @@
+(this.webpackJsonpalumini_portal_front_end=this.webpackJsonpalumini_portal_front_end||[]).push([[269],{385:function(n,a){Prism.languages["nand2tetris-hdl"]={comment:/\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,keyword:/\b(?:CHIP|IN|OUT|PARTS|BUILTIN|CLOCKED)\b/,boolean:/\b(?:true|false)\b/,function:/[A-Za-z][A-Za-z0-9]*(?=\()/,number:/\b\d+\b/,operator:/=|\.\./,punctuation:/[{}[\];(),:]/}}}]);
+//# sourceMappingURL=269.a61c9f6b.chunk.js.map

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <a href="/user_login">Login</a>
+    <form method="post">
+        {%csrf_token%}
+        Username <input type="text" name="username" id="username"><br><br>
+        email <input type="email" name="email" id="email"><br><br>
+        password <input type="password" name="password" id="password"><br><br>
+        bio <input type="text" name="bio" id="bio"><br><br>
+        current_position <input type="text" name="current_position" id="current_position"><br><br>
+        passout_year <input type="number" name="passout_year" id="passout_year"><br><br>
+        branch <input type="text" name="branch" id="branch"><br><br>
+      
+        <button type="submit">signup</button>
+
+    </form>
+    
+</body>
+</html>

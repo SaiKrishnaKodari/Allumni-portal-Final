@@ -21,7 +21,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Alumni_views.home_page),
     path('banner_posts', Alumni_views.send_banner_posts),
-    path('posts', Alumni_views.posts_view),
+    path('posts/', Alumni_views.posts_view),
     path('add_post', Alumni_views.add_post),
+    path('login/', Alumni_views.login_view),
+    path('logout/', Alumni_views.logout_user_view),
+    path('signup/', Alumni_views.create_user),
+    path('cal/', Alumni_views.cal),
 
 ]

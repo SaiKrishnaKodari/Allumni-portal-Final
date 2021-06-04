@@ -1,14 +1,24 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
-from .models import BannerPosts,posts
+from .models import BannerPosts,posts,profile
 from django.views.decorators.csrf import csrf_exempt
 import json
+
+
+
+#auth imports
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
+
+
+
 # Create your views here.
 def home_page(request):
-    return HttpResponse("Home page")
+    return render(request,"index.html")
 
 def send_banner_posts(request):
-    print("request.user",request.user)
+    # print("request.user",request.user)
 
     banner_posts=BannerPosts.objects.all()
     lst=[]
@@ -28,18 +38,83 @@ def posts_view(request):
     posts_=posts.objects.all()
     posts_feed=[]
     for i in posts_:
-        posts_feed.append({"body":i.body})
+        print("request.user",request.user.id)
+        print("i.user",i.user.id)
+        prof=profile.objects.get(user=i.user)
+        asked_user=User.objects.get(id=i.user.id)
+
+        
+        print(prof,asked_user)
+        posts_feed.append({"body":i.body,
+        "name":asked_user.username,
+        "bio":prof.bio,
+        "current_position":prof.current_position,
+        "passout_year":prof.passout_year,
+        "branch":prof.branch
+        })
         posts_feed=posts_feed[::-1]
+
     return JsonResponse(posts_feed,safe=False)
 @csrf_exempt
+
 def add_post(request):
+    if request.user.id is None:
+        print("please login to add post")
+        return HttpResponse("Please login to add post")
     body=request.body.decode('utf-8')
     body=json.loads(body)
-    for i in body:
-        print(i)
+    
     data=body["data"]
     new_post=posts()
     new_post.body=data
+    print("request.user.id",request.user)
+    new_post.user=User.objects.get(id=request.user.id)
     new_post.save()
     return HttpResponse("Post add api")
 
+
+
+@csrf_exempt
+
+def login_view(request):
+    if request.method=="POST":
+        #
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print("user :LOGIN",user)
+        if user is not None:
+            login(request, user)
+            return HttpResponse("successfully logged in")
+        else:
+            return HttpResponse("Invalid credentials ")
+    return render(request,"login.html")
+def logout_user_view(request):
+    logout(request)
+    return HttpResponse("logged out")
+def create_user(request):
+    if request.method=="POST":
+        print(request.POST)
+        _user=User.objects.create_user(request.POST.get("username"),request.POST.get("email"),request.POST.get("password"))
+        prof=profile()
+        prof.user=_user
+        prof.bio=request.POST.get("bio")
+        prof.current_position=request.POST.get("current_position")
+        prof.passout_year=request.POST.get("passout_year")
+        prof.branch=request.POST.get("branch")
+        prof.save()
+        print("_user",_user,prof)
+    return render(request,'signup.html')
+
+@csrf_exempt
+def cal(request):
+    if request.method =="POST":
+        # x=request.body.get("x")
+        # y=request.body.get('y')
+        print(request.POST.get('x'))
+        print(request.body)
+        print(request.POST)
+        # ans=x+y
+        ans=20
+        return JsonResponse('POST hello '+str(ans),safe=False)
+    return JsonResponse("get hello"+str(21),safe=False)
