@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Alumni import views as Alumni_views 
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +28,9 @@ urlpatterns = [
     path('login/', Alumni_views.login_view),
     path('logout/', Alumni_views.logout_user_view),
     path('signup/', Alumni_views.create_user),
-    path('cal/', Alumni_views.cal),
+    # path('cal/', Alumni_views.cal),
+    path('gallery/',Alumni_views.gallery),
+    path('profile/',Alumni_views.profile_user),
 
 ]
+urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

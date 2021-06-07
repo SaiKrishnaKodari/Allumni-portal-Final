@@ -20,6 +20,19 @@ class profile(models.Model):
     passout_year=models.IntegerField()
     branch=models.CharField(max_length=50)
 
+class Photos(models.Model):
+    images=models.ImageField(upload_to='pics',blank=True)
+    # Categories = models.ForeignKey(categories,on_delete =models.CASCADE)
+    # def __str__(self):
+    #     return self.categories
 
     
+class categories(models.Model):
+    title=models.CharField(max_length=50)
+    def __str__(self):
+        return self.title
 
+class Photosallumni(models.Model):
+    images=models.ImageField(upload_to='pics',blank=True)
+    Categories = models.ForeignKey(categories,on_delete =models.CASCADE)
+  

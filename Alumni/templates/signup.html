@@ -1,26 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-</head>
+<html>
+<title>WELCOME TO ALLUMNI PORTAL</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('https://lh3.googleusercontent.com/proxy/TZqjmKQAgo2d-d9prCHv2yHprfpBygovRU3czVudAXjM2PpFTp3VUeKaljheNz6l7zhy66Flh1Hy6cAQx6wBnGRTuYdE0v-f');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.title{
+    color: black;
+    font-size: large;
+}
+</style>
 <body>
-    <a href="/user_login">Login</a>
-    <form method="post">
-        {%csrf_token%}
-        Username <input type="text" name="username" id="username"><br><br>
-        email <input type="email" name="email" id="email"><br><br>
-        password <input type="password" name="password" id="password"><br><br>
-        bio <input type="text" name="bio" id="bio"><br><br>
-        current_position <input type="text" name="current_position" id="current_position"><br><br>
-        passout_year <input type="number" name="passout_year" id="passout_year"><br><br>
-        branch <input type="text" name="branch" id="branch"><br><br>
-      
-        <button type="submit">signup</button>
 
-    </form>
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-middle">
+
     
+    <form method="POST">
+    
+    <fieldset style="float:left;width:500px;height:550px;
+    background-color:white;border-color:#1c1b1b;border: 1px solid # CCC; border-radius:6px;padding:25px;">
+        {% csrf_token %}
+        
+        <h4 style="color:black;">Register as Allumni</h4>
+        <hr>
+        <br>
+        <table>
+        <tr><td class="title"style='width: 150px;'>Username </td><td><input type="text" name="username" id="username"></td></tr>
+        <br>
+        <tr><td class="title"style='width: 150px;'>Email </td><td><input type="email" name="email" id="email"></td></tr>
+        <tr><td class="title"style='width: 150px;'>Password </td><td><input type="password" name="password" id="password"></td></tr>
+        
+        <tr><td class="title"style='width: 150px;'>Bio </td><td><input type="text" name="bio" id="bio"></td></tr>
+        <tr><td class="title"style='width: 150px;'>current_position </td><td><input type="text" name="current_position" id="current_position"></tr>
+        <tr><td class="title"style='width: 150px;'>Passed Out Year </td><td><input type="number" name="passout_year" id="passout_year"></td></tr>
+        <tr><td class="title"style='width: 150px;'>Branch </td><td><input type="text" name="branch" id="branch"></td></tr>
+       
+        </table>
+
+        <br>
+        <br>
+    
+        <input type="submit" value="SIGN UP" style="width: 100px; margin: 0 auto;" />
+        <a class='title'href="/login">Login</a>
+      </fieldset>  
+    </form>
+  </div>
+</div>
 </body>
 </html>

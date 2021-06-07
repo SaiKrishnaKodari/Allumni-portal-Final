@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
-from .models import BannerPosts,posts,profile
+from .models import BannerPosts,posts,profile,Photos,Photosallumni,categories
 from django.views.decorators.csrf import csrf_exempt
 import json
 
@@ -10,6 +10,7 @@ import json
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 
 
@@ -38,13 +39,11 @@ def posts_view(request):
     posts_=posts.objects.all()
     posts_feed=[]
     for i in posts_:
-        print("request.user",request.user.id)
-        print("i.user",i.user.id)
         prof=profile.objects.get(user=i.user)
         asked_user=User.objects.get(id=i.user.id)
 
         
-        print(prof,asked_user)
+        # print(prof,asked_user)
         posts_feed.append({"body":i.body,
         "name":asked_user.username,
         "bio":prof.bio,
@@ -118,3 +117,33 @@ def cal(request):
         ans=20
         return JsonResponse('POST hello '+str(ans),safe=False)
     return JsonResponse("get hello"+str(21),safe=False)
+
+def gallery(request):
+    # msg='data'
+    MEDIA_ROOT='/media/'
+    msg=Photosallumni.objects.all()
+    msgli=[]
+    for i in msg:
+        msgli.append(
+            {
+                "img_url":'http://127.0.0.1:8000'+str(MEDIA_ROOT+str(i.images)),
+                "title":i.Categories.title,
+            })
+    print(msgli)  
+    return JsonResponse(msgli,safe=False)
+
+def profile_user(request):
+    if not request.user.is_authenticated:
+        return HttpResponse("Please Login")
+    details=profile.objects.filter(user=request.user)
+    detail_pro=[obj.__dict__ for obj in details]
+    #print(detail_pro[0]['avatar'])
+    # det=obj.__dict__ 
+    # print(det)
+    
+    return render(request,"profile.html",{"detail_pro":detail_pro})  
+
+
+
+
+    # src="/media/{{i.avatar }}"
